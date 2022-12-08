@@ -6,8 +6,8 @@ import { useDispatch } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { auth } from "../../firebase/config";
-import { SET_ACTIVE_USER, REMOVE_ACTIVE_USER } from "../../redux/slice/authSlice";
-import AdminOnlyRoute from "../adminOnlyRoute/AdminOnlyRoute";
+import { REMOVE_ACTIVE_USER, SET_ACTIVE_USER } from "../../redux/slice/authSlice";
+import { AdminOnlyLink } from "../adminOnlyRoute/AdminOnlyRoute";
 import ShowOnLogin, { ShowOnLogout } from "../hiddenLink/HiddenLink";
 import styles from "./Header.module.scss";
 
@@ -101,11 +101,11 @@ const Header = () => {
               {logo}
               <FaTimes size={24} color="#fff" onClick={hideMenu} />
             </li>
-            <AdminOnlyRoute>
-              <li>
+            <AdminOnlyLink>
+              <Link to="/admin/home">
                 <button className="--btn --btn-primary">ADMIN</button>
-              </li>
-            </AdminOnlyRoute>
+              </Link>
+            </AdminOnlyLink>
             <li>
               <NavLink to="/" className={activeLink}>
                 Home
