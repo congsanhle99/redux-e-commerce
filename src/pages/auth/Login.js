@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import styles from "./auth.module.scss";
-import loginImg from "../../assets/eshop-images/login.png";
-import { Link, useNavigate } from "react-router-dom";
-import { FaGoogle } from "react-icons/fa";
-import Card from "../../components/card/Card";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase/config";
-import { toast, ToastContainer } from "react-toastify";
+import React, { useState } from "react";
+import { FaGoogle } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import loginImg from "../../assets/eshop-images/login.png";
+import Card from "../../components/card/Card";
 import Loader from "../../components/loader/Loader";
+import { auth } from "../../firebase/config";
+import styles from "./auth.module.scss";
 
 const Login = () => {
   const [email, setEmail] = useState("");

@@ -1,8 +1,7 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import registerImg from "../../assets/eshop-images/register.png";
 import Card from "../../components/card/Card";
 import Loader from "../../components/loader/Loader";
@@ -43,18 +42,6 @@ const Register = () => {
 
   return (
     <>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss={false}
-        draggable={false}
-        pauseOnHover={false}
-        theme="light"
-      />
       {isLoading && <Loader />}
       <section className={`container ${styles.auth}`}>
         <Card>
