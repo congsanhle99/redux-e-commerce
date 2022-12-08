@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import React, { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
@@ -13,6 +13,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const provider = new GoogleAuthProvider();
 
   const navigate = useNavigate();
 
@@ -33,6 +34,19 @@ const Login = () => {
         const errorMessage = error.message;
         toast.error(`${errorMessage} - ${errorCode}`);
         setIsLoading(false);
+      });
+  };
+
+  // login with google
+  const signWithGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        toast.success("Login successful!");
+        navigate("/");
+      })
+      .catch((error) => {
+        toast.error(error.message);
       });
   };
 
@@ -69,7 +83,7 @@ const Login = () => {
               </div>
               <p>-- or --</p>
             </form>
-            <button className="--btn --btn-danger --btn-block">
+            <button className="--btn --btn-danger --btn-block" onClick={signWithGoogle}>
               <FaGoogle color="#fff" /> Login With Google
             </button>
             <span className={styles.register}>
