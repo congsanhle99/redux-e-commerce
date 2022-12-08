@@ -4,9 +4,10 @@ import "./App.scss";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // Pages
-import { Contact, Home, Login, Register, Reset } from "./pages/index";
+import { Contact, Home, Login, Register, Reset, Admin } from "./pages/index";
 // Component
 import { Footer, Header } from "./components/index";
+import AdminOnlyRoute from "./components/adminOnlyRoute/AdminOnlyRoute";
 
 function App() {
   return (
@@ -31,6 +32,14 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/reset" element={<Reset />} />
+          <Route
+            path="/admin/*"
+            element={
+              <AdminOnlyRoute>
+                <Admin />
+              </AdminOnlyRoute>
+            }
+          />
         </Routes>
         <Footer />
       </BrowserRouter>
