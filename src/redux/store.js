@@ -1,5 +1,4 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import { auth } from "../firebase/config";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import authReducer from "./slice/authSlice";
 
 const rootReducer = combineReducers({ auth: authReducer });

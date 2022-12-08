@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { auth } from "../../firebase/config";
-import { SET_ACTIVE_USER } from "../../redux/slice/authSlice";
+import { SET_ACTIVE_USER, REMOVE_ACTIVE_USER } from "../../redux/slice/authSlice";
 import styles from "./Header.module.scss";
 
 const logo = (
@@ -80,9 +80,10 @@ const Header = () => {
         );
       } else {
         setDisplayName("");
+        dispatch(REMOVE_ACTIVE_USER({}));
       }
     });
-  }, []);
+  }, [dispatch, displayName]);
 
   return (
     <header>
@@ -114,7 +115,7 @@ const Header = () => {
               <NavLink to="/login" className={activeLink}>
                 Login
               </NavLink>
-              <a href="#">
+              <a href="#home">
                 <FaUserCircle size={16} />
                 Hi, {displayName}
               </a>
