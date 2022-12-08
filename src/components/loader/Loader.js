@@ -6,7 +6,7 @@ import ReactDOM from "react-dom";
 const Loader = () => {
   return ReactDOM.createPortal(
     <div className={styles.wrapper}>
-      <div className={styles.Loader}>
+      <div className={styles.loader}>
         <img src={loaderImg} alt="loading" />
       </div>
     </div>,
