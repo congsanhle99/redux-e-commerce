@@ -19,20 +19,29 @@ const AddProduct = () => {
     desc: "",
   });
 
-  const handleInputChange = (e) => {};
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setProduct({ ...product, [name]: value });
+    console.log("name", [name]);
+    console.log("value", value);
+  };
   const handleImageChange = (e) => {};
+
+  const addProduct = (e) => {
+    e.preventDefault();
+    console.log(product);
+  };
 
   return (
     <div className={styles.product}>
       <h1>Add New Product</h1>
       <Card cardClass={styles.card}>
-        <form onSubmit={handleInputChange}>
+        <form onSubmit={addProduct}>
           <label htmlFor="">Product name:</label>
           <input
             required
             type="text"
             name="name"
-            id=""
             placeholder="Product name"
             value={product.name}
             onChange={(e) => handleInputChange(e)}
@@ -47,26 +56,31 @@ const AddProduct = () => {
             <input
               type="file"
               name="image"
-              id=""
               placeholder="Product Image"
               accept="image/*"
               value={product.imgURL}
               onChange={(e) => handleImageChange(e)}
             />
-            <input required type="text" name="imageURL" disabled />
+            <input
+              // required
+              disabled
+              type="text"
+              name="imageURL"
+              placeholder="Image URL"
+              value={product.imgURL}
+            />
           </Card>
           <label htmlFor="">Product price:</label>
           <input
             required
             type="number"
             name="price"
-            id=""
             placeholder="Product price"
             value={product.price}
             onChange={(e) => handleInputChange(e)}
           />
           <label htmlFor="">Product category:</label>
-          <select required name="category" id="" value={product.category} onChange={(e) => handleInputChange(e)}>
+          <select required name="category" value={product.category} onChange={(e) => handleInputChange(e)}>
             <option value="" disabled>
               -- Choose Product Category --
             </option>
@@ -83,7 +97,6 @@ const AddProduct = () => {
             required
             type="text"
             name="brand"
-            id=""
             placeholder="Product brand"
             value={product.brand}
             onChange={(e) => handleInputChange(e)}
@@ -92,7 +105,6 @@ const AddProduct = () => {
           <textarea
             required
             name="desc"
-            id=""
             cols="30"
             rows="10"
             value={product.desc}
